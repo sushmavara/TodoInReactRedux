@@ -1,0 +1,57 @@
+.todoTask,.todoTask button{
+    border-radius: 3px;
+}
+
+.todoTask {
+    border:2px solid  #edeef0;
+    margin : 10px;
+    height: 20px;
+    padding: 10px 10px; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color:rgb(70, 63, 63);
+
+}
+.todoTitle{
+    flex-grow: 2;
+    margin:0 10px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    max-width: 90%;
+}
+
+.markComplete {
+    text-decoration: line-through;
+    color:red;
+}
+
+.todoTask  div{
+    display: flex;
+    justify-content: space-between;
+    width:18%;
+ }
+
+ .todoTask input[type="checkbox"] {
+     margin:0 0 0 0;
+     width:20px;
+     height: 22px;
+ }
+.todoTask button{
+    border: 1px solid #4285f4;
+    background-color: white;
+    height: 25px;
+    width :30px;
+    margin:0px;
+ }
+
+.todoTask button:hover{
+     cursor: pointer;
+     background-color: #4285f4;
+}
+
+.todoTask  button img{
+   height: 100%;
+   width:90%
+}

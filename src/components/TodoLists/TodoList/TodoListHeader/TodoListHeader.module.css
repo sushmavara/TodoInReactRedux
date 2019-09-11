@@ -1,0 +1,8 @@
+.todoListHeader{
+  display: flex;
+  justify-content: row;
+  background-color:  #edeef0;
+  margin: 0;
+  padding-top: 10px;
+  height: 50px;
+}

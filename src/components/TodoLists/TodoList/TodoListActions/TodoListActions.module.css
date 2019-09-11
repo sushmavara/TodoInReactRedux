@@ -1,0 +1,26 @@
+.todoListActionBar{
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.todoListActionBar button{
+  margin: 5px 10px;
+  height: 35px;
+  width :120px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: white;
+  color:rgb(119, 115, 115);
+}
+
+.addTodoTaskBtn{
+  width:120px;
+  margin: 10px;
+  color: rgb(253, 245, 245);
+  font-weight: bold;
+  font-size: 16px;
+  padding:2px 5px;
+  border-radius: 4px;
+  display: inline-block;
+}
