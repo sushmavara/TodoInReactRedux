@@ -7,11 +7,11 @@ import Button from '../../ui/Button/Button';
 const TodoAppActionBar = (props) => {    
 
   const displayAddNewTodoListModal = () =>{
-    props.modalStateHandler(SHOW_TODO_LIST_ADD_DATA_MODAL,true);
+    props.modalDisplayHandler(SHOW_TODO_LIST_ADD_DATA_MODAL,true);
   }
 
   const displayDeleteTodoListModal = () =>{
-    props.modalStateHandler(SHOW_TODO_LIST_DELETE_MODAL,true);
+    props.modalDisplayHandler(SHOW_TODO_LIST_DELETE_MODAL,true);
   }
 
   let isDeleteBtnDisabled = props.todoListsLength === 0;
@@ -26,5 +26,5 @@ const TodoAppActionBar = (props) => {
 export default TodoAppActionBar;
 
 TodoAppActionBar.propTypes = {
-  modalStateHandler: PropTypes.func.isRequired
+  modalDisplayHandler: PropTypes.func.isRequired
 }

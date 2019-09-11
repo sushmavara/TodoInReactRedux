@@ -11,15 +11,15 @@ class TodoItem extends Component{
   static contextType = TodoItemActionsContext;
 
   updateTodoItemCheckStatus = () =>{
-    this.context.toggleTodoItemCheckedHandler(this.props.todoListId,this.props.todoItemId)
+    this.context.toggleIsCheckedTodoItem(this.props.todoListId,this.props.todoItemId)
   }
 
   updateTodoItemMarkCompleteStatus = () =>{
-    this.context.markCompleteTodoItemHandler(this.props.todoListId,this.props.todoItemId,true);
+    this.context.markCompleteTodoItem(this.props.todoListId,this.props.todoItemId,true);
   }
 
   deleteTodoItem = () =>{
-    this.context.deleteTodoItemHandler(this.props.todoListId,this.props.todoItemId)
+    this.context.deleteTodoItem(this.props.todoListId,this.props.todoItemId)
   }
 
   render () {

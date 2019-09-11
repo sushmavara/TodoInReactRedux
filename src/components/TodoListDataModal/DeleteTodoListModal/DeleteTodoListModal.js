@@ -7,7 +7,12 @@ import {SHOW_TODO_LIST_DELETE_MODAL} from '../../../constants/TodoListDataModalC
 class DeleteTodoListModal extends Component{
 
   hideDeleteTodoListModal = () => {
-    this.props.modalStateHandler(SHOW_TODO_LIST_DELETE_MODAL,false);
+    this.props.modalDisplayHandler(SHOW_TODO_LIST_DELETE_MODAL,false);
+  }
+
+  deleteSelectedTodoList = () =>{
+    this.props.deleteSelectedTodoList();
+    this.hideDeleteTodoListModal();
   }
 
   render(){
@@ -17,7 +22,7 @@ class DeleteTodoListModal extends Component{
                         </label>);
     const modalFooter = <React.Fragment>
                             <Button clicked={this.hideDeleteTodoListModal}>Cancel</Button>
-                            <Button clicked={this.props.deleteSelectedTodoListHandler}>Delete</Button>
+                            <Button clicked={this.deleteSelectedTodoList}>Delete</Button>
                         </React.Fragment>
     return (
       <ModalWrapper modalHeader={modalHeader}
@@ -30,7 +35,7 @@ class DeleteTodoListModal extends Component{
 }
 
 DeleteTodoListModal.propTypes ={
-  modalStateHandler: PropTypes.func.isRequired,
-  deleteSelectedTodoListHandler: PropTypes.func.isRequired
+  modalDisplayHandler: PropTypes.func.isRequired,
+  deleteSelectedTodoList: PropTypes.func.isRequired
 }
 export default DeleteTodoListModal;

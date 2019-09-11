@@ -11,7 +11,7 @@ const _ = require('lodash');
 class TodoLists extends Component {
 
   showAddTodoListModal = () =>{
-    this.props.toggleModalDisplay(SHOW_TODO_LIST_ADD_DATA_MODAL,true);
+    this.props.modalDisplayHandler(SHOW_TODO_LIST_ADD_DATA_MODAL,true);
   }
 
   render (){
@@ -35,7 +35,7 @@ class TodoLists extends Component {
               <TodoList key={todoList.listId} 
                          todoListInfo ={todoList}
                          todoListId={todoList.listId}
-                         addNewTodoItemHandler={this.props.addNewTodoItemHandler}
+                         addNewTodoItem={this.props.addNewTodoItem}
                          />
           )
         });
@@ -50,17 +50,15 @@ class TodoLists extends Component {
 }
 
 TodoLists.propTypes ={
-  addNewTodoItemHandler: PropTypes.func,
+  addNewTodoItem: PropTypes.func,
   todoLists: PropTypes.arrayOf(PropTypes.object),
-  deleteTodoHandler: PropTypes.func,
-  toggleModalDisplay: PropTypes.func
+  modalDisplayHandler: PropTypes.func
 }
 
 TodoLists.defaultProps ={
   todoLists: [],
-  addNewTodoItemHandler : noop,
-  deleteTodoHandler: noop,
-  toggleModalDisplay : noop
+  addNewTodoItem : noop,
+  modalDisplayHandler : noop
 }
 
 export default TodoLists;

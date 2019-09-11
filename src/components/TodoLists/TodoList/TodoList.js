@@ -20,25 +20,25 @@ class TodoList extends Component{
   deleteSelectedTodos = () => {
     const checkedTodos = this.getCheckedTodoItems();
     _.forEach(checkedTodos,(todoItem)=>{
-      this.context.deleteTodoItemHandler(this.props.todoListId, todoItem.id);
+      this.context.deleteTodoItem(this.props.todoListId, todoItem.id);
     });
   }
 
   marCompleteSelectedTodos = () => {
     const checkedTodos = this.getCheckedTodoItems();
     _.forEach(checkedTodos,(todoItem)=>{
-      this.context.markCompleteTodoItemHandler(this.props.todoListId, todoItem.id ,false);
+      this.context.markCompleteTodoItem(this.props.todoListId, todoItem.id ,false);
     });
   }
 
   handleAddNewTodoItem = (todoItemTitle) => {
    if(todoItemTitle.trim() !== ""){
-    this.props.addNewTodoItemHandler(this.props.todoListId, todoItemTitle);
+    this.props.addNewTodoItem(this.props.todoListId, todoItemTitle);
    }
   }
 
   todoListCheckHandler = () => {
-    this.context.toggleTodoListCheckedHandler(this.props.todoListId);
+    this.context.toggleIsCheckedTodoList(this.props.todoListId);
   }
 
   render(){
@@ -76,15 +76,13 @@ class TodoList extends Component{
 TodoList.propTypes ={
   todoListInfo: PropTypes.object.isRequired,
   todoListId: PropTypes.string.isRequired,
-  markCompleteSelectedTodoItemHandler: PropTypes.func,
-  addNewTodoItemHandler: PropTypes.func,
+  markCompleteSelectedTodoItem: PropTypes.func,
+  addNewTodoItem: PropTypes.func,
 }
 
 TodoList.defaultProps = {
-  markCompleteSelectedTodoItemHandler : noop,
-  addNewTodoItemHandler : noop,
+  markCompleteSelectedTodoItem : noop,
+  addNewTodoItem : noop,
 }
-
-
 
 export default TodoList;

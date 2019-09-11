@@ -25,7 +25,7 @@ class AddNewTodoListModal extends Component {
 
   validateAndAddNewList = () => {
     if(this.state.todoListTitleInputValue.trim() !== ""){
-      this.props.addNewTodoListHandler(this.state.todoListTitleInputValue.trim());
+      this.props.addNewTodoList(this.state.todoListTitleInputValue.trim());
     }
   }
 
@@ -36,7 +36,7 @@ class AddNewTodoListModal extends Component {
   }
 
   hideAddNewTodoListModal = () => {
-    this.props.modalStateHandler(SHOW_TODO_LIST_ADD_DATA_MODAL,false);
+    this.props.modalDisplayHandler(SHOW_TODO_LIST_ADD_DATA_MODAL,false);
   }
 
   render(){
@@ -72,8 +72,8 @@ class AddNewTodoListModal extends Component {
 }
 
 AddNewTodoListModal.propTypes ={
-  modalStateHandler: PropTypes.func.isRequired,
-  addNewTodoListHandler: PropTypes.func.isRequired
+  modalDisplayHandler: PropTypes.func.isRequired,
+  addNewTodoList: PropTypes.func.isRequired
 }
 
 
