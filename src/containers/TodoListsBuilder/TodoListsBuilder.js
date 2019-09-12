@@ -1,5 +1,4 @@
 import React , {Component} from 'react'
-import classes from './TodoListsBuilder.module.css'
 import TodoLists from '../../components/TodoLists/TodoLists'
 import TodoAppActionBar from '../../components/TodoAppActionBar/TodoAppActionBar'
 import AddNewTodoListModal from '../../components/TodoListDataModal/AddNewTodoListModal/AddNewTodoListModal'
@@ -43,9 +42,7 @@ class TodoListsBuilder extends Component {
     return(
       <React.Fragment>
         <TodoAppActionBar modalDisplayHandler={this.toggleModalDisplay} todoListsLength={this.props.todoLists.length} />
-        <div className={classes.todoListsContainer}>
-          <TodoLists modalDisplayHandler={this.toggleModalDisplay} />
-        </div>
+        <TodoLists modalDisplayHandler={this.toggleModalDisplay} />
         {showTodoListAddDataModal && <AddNewTodoListModal addNewTodoList={this.addNewTodoList} 
                                                           modalDisplayHandler={this.toggleModalDisplay}/>}
         {showTodoListDeleteModal && <DeleteTodoListModal deleteSelectedTodoList={this.deleteSelectedTodoList} 

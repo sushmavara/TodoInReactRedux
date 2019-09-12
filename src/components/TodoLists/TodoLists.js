@@ -41,10 +41,10 @@ class TodoLists extends Component {
         });
       }
     return (
-      <React.Fragment>
+      <div className={classes.todoListsContainer}>
         {todoListsContainer}
         {addListButton}
-      </React.Fragment>
+      </div>
     );
   }  
 }

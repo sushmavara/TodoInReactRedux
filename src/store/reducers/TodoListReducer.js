@@ -4,7 +4,7 @@ import * as TodoItemActionTypes from '../actionTypes/TodoItemActionTypes'
 const _ = require('lodash');
 
 const initialState = {
-  todoListsContainer:[]
+  todoListsContainer:[] // array of objects : each object contains details on todo list ( id, title, selected, todoItemsArray)
 }
 
 const getTodoListIndex = (todoListsArray,listId) =>{
