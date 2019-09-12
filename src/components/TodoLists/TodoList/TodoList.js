@@ -5,12 +5,21 @@ import PropTypes from 'prop-types';
 import TodoListHeader from './TodoListHeader/TodoListHeader'
 import TodoListActions from './TodoListActions/TodoListActions'
 import { noop } from '@babel/types';
-import TodoItemActionsContext from '../../../context/TodoItemActionsContext'
+import * as TodoItemActionTypes from '../../../store/actionTypes/TodoItemActionTypes'
+import * as TodoListActionTypes from '../../../store/actionTypes/TodoListActionTypes'
+import {connect} from 'react-redux'
 const _ = require('lodash');
 
 class TodoList extends Component{
+  // componentWillReceiveProps(nextProps) {
+  //   const {todoListInfo} =this.props;
+  //   const {listItems,listTitle} = todoListInfo;
 
-  static contextType = TodoItemActionsContext;
+  //   let {todoListInfo: nextListInfo} =nextProps;
+  //   let {listItems: nextListItems} = todoListInfo;
+
+  //   console.log(listItems === nextListItems);
+  // }
 
   getCheckedTodoItems = () => {
     let todoItemList= this.props.todoListInfo.listItems;
@@ -20,25 +29,27 @@ class TodoList extends Component{
   deleteSelectedTodos = () => {
     const checkedTodos = this.getCheckedTodoItems();
     _.forEach(checkedTodos,(todoItem)=>{
-      this.context.deleteTodoItem(this.props.todoListId, todoItem.id);
+      this.props.deleteTodoItem(this.props.todoListId, todoItem.id);
     });
   }
 
   marCompleteSelectedTodos = () => {
     const checkedTodos = this.getCheckedTodoItems();
     _.forEach(checkedTodos,(todoItem)=>{
-      this.context.markCompleteTodoItem(this.props.todoListId, todoItem.id ,false);
+      this.props.markCompleteTodoItem(this.props.todoListId, todoItem.id ,false);
     });
   }
 
   handleAddNewTodoItem = (todoItemTitle) => {
+    debugger;
    if(todoItemTitle.trim() !== ""){
-    this.props.addNewTodoItem(this.props.todoListId, todoItemTitle);
+    const todoItemId= Date.now().toString();
+    this.props.addNewTodoItem(this.props.todoListId, todoItemTitle,todoItemId);
    }
   }
 
   todoListCheckHandler = () => {
-    this.context.toggleIsCheckedTodoList(this.props.todoListId);
+    this.props.toggleIsCheckedTodoList(this.props.todoListId);
   }
 
   render(){
@@ -85,4 +96,15 @@ TodoList.defaultProps = {
   addNewTodoItem : noop,
 }
 
-export default TodoList;
+const mapDispatchToProps = dispatch =>{
+  return{
+    toggleIsCheckedTodoList : (listId) => dispatch({type:TodoListActionTypes.TOGGLE_TODO_LIST_IS_CHECKED,listId:listId}),
+    addNewTodoItem : (listId,todoTitle,itemId) => dispatch({type:TodoItemActionTypes.ADD_NEW_TODO_ITEM,listId:listId,todoTitle:todoTitle,itemId:itemId}),
+    markCompleteTodoItem : (listId,itemId,isToggle) => dispatch({type:TodoItemActionTypes.MARK_COMPLETE_TODO_ITEM,listId:listId,itemId:itemId,isToggle:isToggle}),
+    deleteTodoItem: (listId,itemId) => dispatch({type:TodoItemActionTypes.DELETE_TODO_ITEM,listId:listId,itemId:itemId}),
+  }
+}
+
+
+
+export default connect(null,mapDispatchToProps)(TodoList);

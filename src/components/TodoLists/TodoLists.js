@@ -6,6 +6,7 @@ import {SHOW_TODO_LIST_ADD_DATA_MODAL} from '../../constants/TodoListDataModalCo
 import Button from '../../ui/Button/Button'
 import addIcon from '../../assets/add_todo_list.png'
 import { noop } from '@babel/types'
+import {connect} from 'react-redux'
 const _ = require('lodash');
 
 class TodoLists extends Component {
@@ -32,10 +33,9 @@ class TodoLists extends Component {
     } else {
         todoListsContainer = _.map(todoLists,(todoList) => {
           return (
-              <TodoList key={todoList.listId} 
+              <TodoList  key={todoList.listId} 
                          todoListInfo ={todoList}
                          todoListId={todoList.listId}
-                         addNewTodoItem={this.props.addNewTodoItem}
                          />
           )
         });
@@ -50,15 +50,19 @@ class TodoLists extends Component {
 }
 
 TodoLists.propTypes ={
-  addNewTodoItem: PropTypes.func,
   todoLists: PropTypes.arrayOf(PropTypes.object),
   modalDisplayHandler: PropTypes.func
 }
 
 TodoLists.defaultProps ={
   todoLists: [],
-  addNewTodoItem : noop,
   modalDisplayHandler : noop
 }
 
-export default TodoLists;
+const mapStateToProps = state =>{
+  return {
+    todoLists : state.todoListsContainer
+  }
+}
+
+export default connect(mapStateToProps)(TodoLists);
