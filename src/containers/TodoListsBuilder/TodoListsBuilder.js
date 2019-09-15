@@ -23,14 +23,14 @@ class TodoListsBuilder extends Component {
 
   addNewTodoListHandler = (title) =>{
     const todoListId=  Date.now().toString();
-    this.props.addNewTodoList(title,todoListId);
+    this.props.onAddNewTodoList(title,todoListId);
     this.setState({
       showTodoListAddDataModal:false
     })
   }
 
   deleteSelectedTodoListHandler = () =>{
-    this.props.deleteSelectedTodoList();
+    this.props.onDeleteSelectedTodoList();
     this.setState({
       showTodoListDeleteModal:false
     })
@@ -60,8 +60,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return{
-    addNewTodoList: (todoListTitle,todoListId) => dispatch(actionCreators.addNewTodoList(todoListTitle,todoListId)),
-    deleteSelectedTodoList: () => dispatch(actionCreators.deleteSelectedTodoList()),
+    onAddNewTodoList: (todoListTitle,todoListId) => dispatch(actionCreators.addNewTodoList(todoListTitle,todoListId)),
+    onDeleteSelectedTodoList: () => dispatch(actionCreators.deleteSelectedTodoList()),
   }
 }
 

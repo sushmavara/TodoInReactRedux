@@ -19,26 +19,26 @@ class TodoList extends Component{
   deleteSelectedTodos = () => {
     const checkedTodos = this.getCheckedTodoItems();
     _.forEach(checkedTodos,(todoItem)=>{
-      this.props.deleteTodoItem(this.props.todoListId, todoItem.id);
+      this.props.onDeleteTodoItem(this.props.todoListId, todoItem.id);
     });
   }
 
   marCompleteSelectedTodos = () => {
     const checkedTodos = this.getCheckedTodoItems();
     _.forEach(checkedTodos,(todoItem)=>{
-      this.props.markCompleteTodoItem(this.props.todoListId, todoItem.id ,false);
+      this.props.onMarkCompleteTodoItem(this.props.todoListId, todoItem.id ,false);
     });
   }
 
   handleAddNewTodoItem = (todoItemTitle) => {
    if(todoItemTitle.trim() !== ""){
     const todoItemId= Date.now().toString();
-    this.props.addNewTodoItem(this.props.todoListId, todoItemTitle,todoItemId);
+    this.props.onAddNewTodoItem(this.props.todoListId, todoItemTitle,todoItemId);
    }
   }
 
   todoListCheckHandler = () => {
-    this.props.toggleIsCheckedTodoList(this.props.todoListId);
+    this.props.onToggleIsCheckedTodoList(this.props.todoListId);
   }
 
   render(){
@@ -87,10 +87,10 @@ TodoList.defaultProps = {
 
 const mapDispatchToProps = dispatch =>{
   return{
-    toggleIsCheckedTodoList : (listId) => dispatch(actionCreators.toggleTodoListIsChecked(listId)),
-    addNewTodoItem : (listId,todoTitle,itemId) => dispatch(actionCreators.addNewTodoItem(listId,todoTitle,itemId)),
-    markCompleteTodoItem : (listId,itemId,isToggle) => dispatch(actionCreators.markCompleteTodoItem(listId,itemId,isToggle)),
-    deleteTodoItem: (listId,itemId) => dispatch(actionCreators.deleteTodoItem(listId,itemId)),
+    onToggleIsCheckedTodoList : (listId) => dispatch(actionCreators.toggleTodoListIsChecked(listId)),
+    onAddNewTodoItem : (listId,todoTitle,itemId) => dispatch(actionCreators.addNewTodoItem(listId,todoTitle,itemId)),
+    onMarkCompleteTodoItem : (listId,itemId,isToggle) => dispatch(actionCreators.markCompleteTodoItem(listId,itemId,isToggle)),
+    onDeleteTodoItem: (listId,itemId) => dispatch(actionCreators.deleteTodoItem(listId,itemId)),
   }
 }
 

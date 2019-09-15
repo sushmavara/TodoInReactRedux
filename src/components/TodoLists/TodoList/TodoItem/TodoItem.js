@@ -11,15 +11,15 @@ const _ = require('lodash');
 class TodoItem extends Component{
 
   updateTodoItemCheckStatus = () =>{
-    this.props.toggleIsCheckedTodoItem(this.props.todoListId,this.props.todoItemId)
+    this.props.onToggleIsCheckedTodoItem(this.props.todoListId,this.props.todoItemId)
   }
 
   updateTodoItemMarkCompleteStatus = () =>{
-    this.props.markCompleteTodoItem(this.props.todoListId,this.props.todoItemId,true);
+    this.props.onMarkCompleteTodoItem(this.props.todoListId,this.props.todoItemId,true);
   }
 
   deleteTodoItemHandler = () =>{
-    this.props.deleteTodoItem(this.props.todoListId,this.props.todoItemId)
+    this.props.onDeleteTodoItem(this.props.todoListId,this.props.todoItemId)
   }
 
   render () {
@@ -57,9 +57,9 @@ TodoItem.defaultProps = {
 
 const mapDispatchToProps = dispatch =>{
   return{
-    markCompleteTodoItem : (listId,itemId,isToggle) => dispatch(actionCreators.markCompleteTodoItem(listId,itemId,isToggle)),
-    deleteTodoItem: (listId,itemId) => dispatch(actionCreators.deleteTodoItem(listId,itemId)),
-    toggleIsCheckedTodoItem : (listId,itemId) => dispatch(actionCreators.toggleIsCheckedTodoItem(listId,itemId))
+    onMarkCompleteTodoItem : (listId,itemId,isToggle) => dispatch(actionCreators.markCompleteTodoItem(listId,itemId,isToggle)),
+    onDeleteTodoItem: (listId,itemId) => dispatch(actionCreators.deleteTodoItem(listId,itemId)),
+    onToggleIsCheckedTodoItem : (listId,itemId) => dispatch(actionCreators.toggleIsCheckedTodoItem(listId,itemId))
   }
 }
 
