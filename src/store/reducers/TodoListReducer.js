@@ -1,10 +1,11 @@
-import * as TodoListActionTypes from '../actionTypes/TodoListActionTypes'
-import * as TodoItemActionTypes from '../actionTypes/TodoItemActionTypes'
+import * as TodoListActionTypes from '../actionTypes/todoListActionTypes';
+import * as TodoItemActionTypes from '../actionTypes/todoItemActionTypes';
+import updateObj from '../utility';
 
 const _ = require('lodash');
 
 const initialState = {
-  todoListsContainer:[] // array of objects : each object contains details on todo list ( id, title, selected, todoItemsArray)
+  todoListsContainer:[]
 }
 
 const getTodoListIndex = (todoListsArray,listId) =>{
@@ -23,19 +24,13 @@ const addNewTodoList = (title,todoListId,state) => {
     listTitle: title,
     isSelected: false
   });
-  return {
-    ...state,
-    todoListsContainer:updatedTodoLists
-  };
+  return updateObj(state,{todoListsContainer:updatedTodoLists});
 }
 
 const deleteSelectedTodoList= (state) => {
   const updatedTodoLists = _.cloneDeep(state.todoListsContainer);
   _.remove(updatedTodoLists,(todoList) => todoList.isSelected);
-  return {
-    ...state,
-    todoListsContainer:updatedTodoLists
-  };
+  return updateObj(state,{todoListsContainer:updatedTodoLists});
 }
 
 const toggleIsCheckedOnTodoList = (listId,state) => {
@@ -43,10 +38,7 @@ const toggleIsCheckedOnTodoList = (listId,state) => {
   const listIndex = getTodoListIndex(updatedTodoLists,listId);
   const todoList = updatedTodoLists[listIndex];
   todoList.isSelected = !todoList.isSelected;
-  return{
-    ...state,
-    todoListsContainer:updatedTodoLists
-  }
+  return updateObj(state,{todoListsContainer:updatedTodoLists});
 }
 
 const addNewTodoItem= (listId,todoTitle,itemId,state) => {
@@ -59,10 +51,7 @@ const addNewTodoItem= (listId,todoTitle,itemId,state) => {
   };
   const listIndex = getTodoListIndex(updatedTodoLists,listId);
   updatedTodoLists[listIndex].listItems = [newTodoItem,...updatedTodoLists[listIndex].listItems];
-  return{
-    ...state,
-    todoListsContainer : updatedTodoLists
-  }
+  return updateObj(state,{todoListsContainer:updatedTodoLists});
 }
 
 const markCompleteTodoItem = (listId, itemId, isToggle, state) => {
@@ -75,10 +64,7 @@ const markCompleteTodoItem = (listId, itemId, isToggle, state) => {
   }else{
     todoListItems[itemIndex].isCompleted = true;
   }
-  return{
-    ...state,
-    todoListsContainer : updatedTodoLists
-  }
+  return updateObj(state,{todoListsContainer:updatedTodoLists});
 }
 
 const toggleIsCheckedOnTodoItem = (listId, itemId, state) => {
@@ -87,10 +73,7 @@ const toggleIsCheckedOnTodoItem = (listId, itemId, state) => {
   const todoListItems = updatedTodoLists[listIndex].listItems;
   const itemIndex = getTodoItemIndex(todoListItems,itemId);
   todoListItems[itemIndex].isChecked = !todoListItems[itemIndex].isChecked;
-  return{
-    ...state,
-    todoListsContainer : updatedTodoLists
-  }
+  return updateObj(state,{todoListsContainer:updatedTodoLists});
 }
 
 const deleteTodoItem = (listId, itemId, state) => {
@@ -98,10 +81,7 @@ const deleteTodoItem = (listId, itemId, state) => {
   const listIndex = getTodoListIndex(updatedTodoLists,listId);
   const todoListItems =  updatedTodoLists[listIndex].listItems;
   _.remove(todoListItems,(todoItem)=> todoItem.id === itemId);
-  return{
-    ...state,
-    todoListsContainer : updatedTodoLists
-  }
+  return updateObj(state,{todoListsContainer:updatedTodoLists});
 }
 
 const todoListReducer = (state = initialState, action) =>{

@@ -1,12 +1,12 @@
-import React, {Component} from 'react'
-import TodoList from './TodoList/TodoList'
-import classes from './TodoLists.module.css'
-import PropTypes from 'prop-types'
-import {SHOW_TODO_LIST_ADD_DATA_MODAL} from '../../constants/TodoListDataModalConstants'
-import Button from '../../ui/Button/Button'
-import addIcon from '../../assets/add_todo_list.png'
-import { noop } from '@babel/types'
-import {connect} from 'react-redux'
+import React, {Component} from 'react';
+import TodoList from './TodoList/TodoList';
+import classes from './TodoLists.module.css';
+import PropTypes from 'prop-types';
+import {SHOW_TODO_LIST_ADD_DATA_MODAL} from '../../constants/TodoListDataModalConstants';
+import Button from '../../ui/Button/Button';
+import addIcon from '../../assets/add_todo_list.png';
+import { noop } from 'lodash';
+import {connect} from 'react-redux';
 const _ = require('lodash');
 
 class TodoLists extends Component {

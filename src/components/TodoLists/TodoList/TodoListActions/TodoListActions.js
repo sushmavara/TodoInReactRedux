@@ -1,9 +1,9 @@
 
-import React,{Component} from 'react'
+import React,{Component} from 'react';
 import classes from './TodoListActions.module.css';
 import Button from '../../../../ui/Button/Button';
 import PropTypes from 'prop-types';
-import { noop } from '@babel/types';
+import { noop } from 'lodash';
 
 class TodoListActions extends Component{
   constructor(props){

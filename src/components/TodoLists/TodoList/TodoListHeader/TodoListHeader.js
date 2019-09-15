@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import classes from './TodoListHeader.module.css';
 import PropTypes from 'prop-types';
-import { noop } from '@babel/types';
+import { noop } from 'lodash';
 
 const TodoListHeader = (props) => {
   return(

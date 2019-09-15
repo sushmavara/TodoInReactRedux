@@ -1,5 +1,5 @@
-import React from 'react'
-import classes from './AppHeader.module.css'
+import React from 'react';
+import classes from './AppHeader.module.css';
 
 const AppHeader = () => {
   return (

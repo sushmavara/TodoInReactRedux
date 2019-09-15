@@ -1,25 +1,15 @@
-import React,{Component} from 'react'
+import React,{Component} from 'react';
 import classes from './TodoList.module.css';
-import TodoItem from './TodoItem/TodoItem'
+import TodoItem from './TodoItem/TodoItem';
 import PropTypes from 'prop-types';
-import TodoListHeader from './TodoListHeader/TodoListHeader'
-import TodoListActions from './TodoListActions/TodoListActions'
-import { noop } from '@babel/types';
-import * as TodoItemActionTypes from '../../../store/actionTypes/TodoItemActionTypes'
-import * as TodoListActionTypes from '../../../store/actionTypes/TodoListActionTypes'
-import {connect} from 'react-redux'
+import TodoListHeader from './TodoListHeader/TodoListHeader';
+import TodoListActions from './TodoListActions/TodoListActions';
+import {noop} from 'lodash';
+import {connect} from 'react-redux';
+import * as actionCreators from '../../../store/actionCreators/index';
 const _ = require('lodash');
 
 class TodoList extends Component{
-  // componentWillReceiveProps(nextProps) {
-  //   const {todoListInfo} =this.props;
-  //   const {listItems,listTitle} = todoListInfo;
-
-  //   let {todoListInfo: nextListInfo} =nextProps;
-  //   let {listItems: nextListItems} = todoListInfo;
-
-  //   console.log(listItems === nextListItems);
-  // }
 
   getCheckedTodoItems = () => {
     let todoItemList= this.props.todoListInfo.listItems;
@@ -41,7 +31,6 @@ class TodoList extends Component{
   }
 
   handleAddNewTodoItem = (todoItemTitle) => {
-    debugger;
    if(todoItemTitle.trim() !== ""){
     const todoItemId= Date.now().toString();
     this.props.addNewTodoItem(this.props.todoListId, todoItemTitle,todoItemId);
@@ -98,10 +87,10 @@ TodoList.defaultProps = {
 
 const mapDispatchToProps = dispatch =>{
   return{
-    toggleIsCheckedTodoList : (listId) => dispatch({type:TodoListActionTypes.TOGGLE_TODO_LIST_IS_CHECKED,listId:listId}),
-    addNewTodoItem : (listId,todoTitle,itemId) => dispatch({type:TodoItemActionTypes.ADD_NEW_TODO_ITEM,listId:listId,todoTitle:todoTitle,itemId:itemId}),
-    markCompleteTodoItem : (listId,itemId,isToggle) => dispatch({type:TodoItemActionTypes.MARK_COMPLETE_TODO_ITEM,listId:listId,itemId:itemId,isToggle:isToggle}),
-    deleteTodoItem: (listId,itemId) => dispatch({type:TodoItemActionTypes.DELETE_TODO_ITEM,listId:listId,itemId:itemId}),
+    toggleIsCheckedTodoList : (listId) => dispatch(actionCreators.toggleTodoListIsChecked(listId)),
+    addNewTodoItem : (listId,todoTitle,itemId) => dispatch(actionCreators.addNewTodoItem(listId,todoTitle,itemId)),
+    markCompleteTodoItem : (listId,itemId,isToggle) => dispatch(actionCreators.markCompleteTodoItem(listId,itemId,isToggle)),
+    deleteTodoItem: (listId,itemId) => dispatch(actionCreators.deleteTodoItem(listId,itemId)),
   }
 }
 

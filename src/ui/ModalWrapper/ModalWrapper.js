@@ -1,7 +1,7 @@
-import React from 'react'
-import classes from './ModalWrapper.module.css'
-import BackDrop from '../BackDrop/BackDrop.jsx'
-import PropTypes from 'prop-types'
+import React from 'react';
+import classes from './ModalWrapper.module.css';
+import BackDrop from '../BackDrop/BackDrop.jsx';
+import PropTypes from 'prop-types';
 
 const ModalWrapper = (props) =>{
   return (

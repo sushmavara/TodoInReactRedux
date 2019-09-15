@@ -1,11 +1,11 @@
-import React,{Component} from 'react'
+import React,{Component} from 'react';
 import classes from './TodoItem.module.css';
-import DeleteTodo from '../../../../assets/todo-delete.png'
-import CompleteTodo from '../../../../assets/todo-complete.png'
+import DeleteTodo from '../../../../assets/todo-delete.png';
+import CompleteTodo from '../../../../assets/todo-complete.png';
 import PropTypes from 'prop-types';
 import Button from '../../../../ui/Button/Button';
 import {connect} from 'react-redux';
-import * as TodoItemActionTypes from '../../../../store/actionTypes/TodoItemActionTypes'
+import * as actionCreators from '../../../../store/actionCreators/index';
 const _ = require('lodash');
 
 class TodoItem extends Component{
@@ -57,9 +57,9 @@ TodoItem.defaultProps = {
 
 const mapDispatchToProps = dispatch =>{
   return{
-    markCompleteTodoItem : (listId,itemId,isToggle) => dispatch({type:TodoItemActionTypes.MARK_COMPLETE_TODO_ITEM,listId:listId,itemId:itemId,isToggle:isToggle}),
-    deleteTodoItem: (listId,itemId) => dispatch({type:TodoItemActionTypes.DELETE_TODO_ITEM,listId:listId,itemId:itemId}),
-    toggleIsCheckedTodoItem : (listId,itemId) => dispatch({type:TodoItemActionTypes.TOGGLE_TODO_ITEM_IS_CHECKED,listId:listId,itemId:itemId})
+    markCompleteTodoItem : (listId,itemId,isToggle) => dispatch(actionCreators.markCompleteTodoItem(listId,itemId,isToggle)),
+    deleteTodoItem: (listId,itemId) => dispatch(actionCreators.deleteTodoItem(listId,itemId)),
+    toggleIsCheckedTodoItem : (listId,itemId) => dispatch(actionCreators.toggleIsCheckedTodoItem(listId,itemId))
   }
 }
 

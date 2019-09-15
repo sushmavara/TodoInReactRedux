@@ -1,10 +1,10 @@
-import React , {Component} from 'react'
-import TodoLists from '../../components/TodoLists/TodoLists'
-import TodoAppActionBar from '../../components/TodoAppActionBar/TodoAppActionBar'
-import AddNewTodoListModal from '../../components/TodoListDataModal/AddNewTodoListModal/AddNewTodoListModal'
-import DeleteTodoListModal from '../../components/TodoListDataModal/DeleteTodoListModal/DeleteTodoListModal'
-import {connect} from 'react-redux'
-import * as TodoListActionTypes from '../../store/actionTypes/TodoListActionTypes'
+import React , {Component} from 'react';
+import TodoLists from '../../components/TodoLists/TodoLists';
+import TodoAppActionBar from '../../components/TodoAppActionBar/TodoAppActionBar';
+import AddNewTodoListModal from '../../components/TodoListDataModal/AddNewTodoListModal/AddNewTodoListModal';
+import DeleteTodoListModal from '../../components/TodoListDataModal/DeleteTodoListModal/DeleteTodoListModal';
+import * as actionCreators from '../../store/actionCreators/index';
+import {connect} from 'react-redux';
 
 class TodoListsBuilder extends Component {
   constructor(props) {
@@ -42,7 +42,7 @@ class TodoListsBuilder extends Component {
     return(
       <React.Fragment>
         <TodoAppActionBar modalDisplayHandler={this.toggleModalDisplay} todoListsLength={this.props.todoLists.length} />
-        <TodoLists modalDisplayHandler={this.toggleModalDisplay} />
+        <TodoLists modalDisplayHandler={this.toggleModalDisplay} todoLists={{checck:"hellooow"}}/>
         {showTodoListAddDataModal && <AddNewTodoListModal addNewTodoList={this.addNewTodoList} 
                                                           modalDisplayHandler={this.toggleModalDisplay}/>}
         {showTodoListDeleteModal && <DeleteTodoListModal deleteSelectedTodoList={this.deleteSelectedTodoList} 
@@ -60,8 +60,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return{
-    addNewTodoListHandler: (todoListTitle,todoListId) => dispatch({type:TodoListActionTypes.ADD_NEW_TODO_LIST,title:todoListTitle,todoListId:todoListId}),
-    deleteSelectedTodoListHandler : () => dispatch({type:TodoListActionTypes.DELETE_SELECTED_TODO_LIST}),
+    addNewTodoListHandler: (todoListTitle,todoListId) => dispatch(actionCreators.addNewTodoList(todoListTitle,todoListId)),
+    deleteSelectedTodoListHandler : () => dispatch(actionCreators.deleteSelectedTodoList()),
   }
 }
 

@@ -1,8 +1,8 @@
-import React,{Component} from 'react'
-import ModalWrapper from '../../../ui/ModalWrapper/ModalWrapper'
+import React,{Component} from 'react';
+import ModalWrapper from '../../../ui/ModalWrapper/ModalWrapper';
 import PropTypes from 'prop-types';
-import Button from '../../../ui/Button/Button'
-import {SHOW_TODO_LIST_DELETE_MODAL} from '../../../constants/TodoListDataModalConstants'
+import Button from '../../../ui/Button/Button';
+import {SHOW_TODO_LIST_DELETE_MODAL} from '../../../constants/TodoListDataModalConstants';
 
 class DeleteTodoListModal extends Component{
 
