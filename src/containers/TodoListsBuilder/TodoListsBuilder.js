@@ -21,16 +21,16 @@ class TodoListsBuilder extends Component {
     });
   }
 
-  addNewTodoList = (title) =>{
+  addNewTodoListHandler = (title) =>{
     const todoListId=  Date.now().toString();
-    this.props.addNewTodoListHandler(title,todoListId);
+    this.props.addNewTodoList(title,todoListId);
     this.setState({
       showTodoListAddDataModal:false
     })
   }
 
-  deleteSelectedTodoList = () =>{
-    this.props.deleteSelectedTodoListHandler();
+  deleteSelectedTodoListHandler = () =>{
+    this.props.deleteSelectedTodoList();
     this.setState({
       showTodoListDeleteModal:false
     })
@@ -43,9 +43,9 @@ class TodoListsBuilder extends Component {
       <React.Fragment>
         <TodoAppActionBar modalDisplayHandler={this.toggleModalDisplay} todoListsLength={this.props.todoLists.length} />
         <TodoLists modalDisplayHandler={this.toggleModalDisplay} todoLists={{checck:"hellooow"}}/>
-        {showTodoListAddDataModal && <AddNewTodoListModal addNewTodoList={this.addNewTodoList} 
+        {showTodoListAddDataModal && <AddNewTodoListModal addNewTodoList={this.addNewTodoListHandler} 
                                                           modalDisplayHandler={this.toggleModalDisplay}/>}
-        {showTodoListDeleteModal && <DeleteTodoListModal deleteSelectedTodoList={this.deleteSelectedTodoList} 
+        {showTodoListDeleteModal && <DeleteTodoListModal deleteSelectedTodoList={this.deleteSelectedTodoListHandler} 
                                                          modalDisplayHandler={this.toggleModalDisplay}/> }
       </React.Fragment>  
     );
@@ -60,8 +60,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return{
-    addNewTodoListHandler: (todoListTitle,todoListId) => dispatch(actionCreators.addNewTodoList(todoListTitle,todoListId)),
-    deleteSelectedTodoListHandler : () => dispatch(actionCreators.deleteSelectedTodoList()),
+    addNewTodoList: (todoListTitle,todoListId) => dispatch(actionCreators.addNewTodoList(todoListTitle,todoListId)),
+    deleteSelectedTodoList: () => dispatch(actionCreators.deleteSelectedTodoList()),
   }
 }
 
