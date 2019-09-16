@@ -7,6 +7,7 @@ import Button from '../../ui/Button/Button';
 import addIcon from '../../assets/add_todo_list.png';
 import { noop } from 'lodash';
 import {connect} from 'react-redux';
+import {getTodoLists} from '../../selectors/todoListsSelector';
 const _ = require('lodash');
 
 class TodoLists extends Component {
@@ -61,7 +62,7 @@ TodoLists.defaultProps ={
 
 const mapStateToProps = state =>{
   return {
-    todoLists : state.todoListsContainer
+    todoLists : getTodoLists(state)
   }
 }
 

@@ -5,6 +5,7 @@ import AddNewTodoListModal from '../../components/TodoListDataModal/AddNewTodoLi
 import DeleteTodoListModal from '../../components/TodoListDataModal/DeleteTodoListModal/DeleteTodoListModal';
 import * as actions from '../../store/actions/actionCreators/index';
 import {connect} from 'react-redux';
+import {getTodoLists} from '../../selectors/todoListsSelector'
 
 class TodoListsBuilder extends Component {
   constructor(props) {
@@ -54,7 +55,7 @@ class TodoListsBuilder extends Component {
 
 const mapStateToProps = state =>{
   return {
-    todoLists : state.todoListsContainer
+    todoLists : getTodoLists(state)
   }
 }
 
