@@ -1,5 +1,5 @@
-import * as TodoListActionTypes from '../actionTypes/todoListActionTypes';
-import * as TodoItemActionTypes from '../actionTypes/todoItemActionTypes';
+import * as TodoListActionTypes from '../actions/actionTypes/todoListActionTypes';
+import * as TodoItemActionTypes from '../actions/actionTypes/todoItemActionTypes';
 import updateObj from '../utility';
 
 const _ = require('lodash');

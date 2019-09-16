@@ -3,7 +3,7 @@ import TodoLists from '../../components/TodoLists/TodoLists';
 import TodoAppActionBar from '../../components/TodoAppActionBar/TodoAppActionBar';
 import AddNewTodoListModal from '../../components/TodoListDataModal/AddNewTodoListModal/AddNewTodoListModal';
 import DeleteTodoListModal from '../../components/TodoListDataModal/DeleteTodoListModal/DeleteTodoListModal';
-import * as actionCreators from '../../store/actionCreators/index';
+import * as actions from '../../store/actions/actionCreators/index';
 import {connect} from 'react-redux';
 
 class TodoListsBuilder extends Component {
@@ -60,8 +60,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return{
-    onAddNewTodoList: (todoListTitle,todoListId) => dispatch(actionCreators.addNewTodoList(todoListTitle,todoListId)),
-    onDeleteSelectedTodoList: () => dispatch(actionCreators.deleteSelectedTodoList()),
+    onAddNewTodoList: (todoListTitle,todoListId) => dispatch(actions.addNewTodoList(todoListTitle,todoListId)),
+    onDeleteSelectedTodoList: () => dispatch(actions.deleteSelectedTodoList()),
   }
 }
 

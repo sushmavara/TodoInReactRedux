@@ -5,7 +5,7 @@ import CompleteTodo from '../../../../assets/todo-complete.png';
 import PropTypes from 'prop-types';
 import Button from '../../../../ui/Button/Button';
 import {connect} from 'react-redux';
-import * as actionCreators from '../../../../store/actionCreators/index';
+import * as actions from '../../../../store/actions/actionCreators/index';
 const _ = require('lodash');
 
 class TodoItem extends Component{
@@ -57,9 +57,9 @@ TodoItem.defaultProps = {
 
 const mapDispatchToProps = dispatch =>{
   return{
-    onMarkCompleteTodoItem : (listId,itemId,isToggle) => dispatch(actionCreators.markCompleteTodoItem(listId,itemId,isToggle)),
-    onDeleteTodoItem: (listId,itemId) => dispatch(actionCreators.deleteTodoItem(listId,itemId)),
-    onToggleIsCheckedTodoItem : (listId,itemId) => dispatch(actionCreators.toggleIsCheckedTodoItem(listId,itemId))
+    onMarkCompleteTodoItem : (listId,itemId,isToggle) => dispatch(actions.markCompleteTodoItem(listId,itemId,isToggle)),
+    onDeleteTodoItem: (listId,itemId) => dispatch(actions.deleteTodoItem(listId,itemId)),
+    onToggleIsCheckedTodoItem : (listId,itemId) => dispatch(actions.toggleIsCheckedTodoItem(listId,itemId))
   }
 }
 

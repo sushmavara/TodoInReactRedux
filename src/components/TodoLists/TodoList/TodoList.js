@@ -6,7 +6,7 @@ import TodoListHeader from './TodoListHeader/TodoListHeader';
 import TodoListActions from './TodoListActions/TodoListActions';
 import {noop} from 'lodash';
 import {connect} from 'react-redux';
-import * as actionCreators from '../../../store/actionCreators/index';
+import * as actions from '../../../store/actions/actionCreators/index'
 const _ = require('lodash');
 
 class TodoList extends Component{
@@ -87,10 +87,10 @@ TodoList.defaultProps = {
 
 const mapDispatchToProps = dispatch =>{
   return{
-    onToggleIsCheckedTodoList : (listId) => dispatch(actionCreators.toggleTodoListIsChecked(listId)),
-    onAddNewTodoItem : (listId,todoTitle,itemId) => dispatch(actionCreators.addNewTodoItem(listId,todoTitle,itemId)),
-    onMarkCompleteTodoItem : (listId,itemId,isToggle) => dispatch(actionCreators.markCompleteTodoItem(listId,itemId,isToggle)),
-    onDeleteTodoItem: (listId,itemId) => dispatch(actionCreators.deleteTodoItem(listId,itemId)),
+    onToggleIsCheckedTodoList : (listId) => dispatch(actions.toggleTodoListIsChecked(listId)),
+    onAddNewTodoItem : (listId,todoTitle,itemId) => dispatch(actions.addNewTodoItem(listId,todoTitle,itemId)),
+    onMarkCompleteTodoItem : (listId,itemId,isToggle) => dispatch(actions.markCompleteTodoItem(listId,itemId,isToggle)),
+    onDeleteTodoItem: (listId,itemId) => dispatch(actions.deleteTodoItem(listId,itemId)),
   }
 }
 
